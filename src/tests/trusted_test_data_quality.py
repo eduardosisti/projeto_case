@@ -33,7 +33,7 @@ def data():
     database = DatabaseConfig()
 
     # Pegar o frame a ser testado
-    df = database.query_to_dataframe('select * from trusted_case_parte_um')
+    df = database.query_to_dataframe('select * from trusted_case_parte_um') # chapei a tabela a ser tratada em codigo, um ponto de melhoria seria construir uma camada onde se passa a tabela como argumento e se faça os testes
 
     # Aplicar validação de email
     df['email_valid'] = df['email'].apply(validate_email)

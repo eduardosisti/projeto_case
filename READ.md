@@ -40,26 +40,37 @@ gabriel_case/
 - `README.md`: Documentação do projeto.
 
 
-## Configuração
+## Ordem de processos
 1. Execute o Docker Compose para subir o banco de dados PostgreSQL:
    ```bash
    docker-compose -f docker/docker-compose.yml up -d
 
-2. instale os modulos:
+2. Ter algum interpretador python instalado, recomendo a instalação de a criação de um ambiente virutal
+   ```bash
+   pip install virtualenv
+   virtualenv venv
+   source venv/bin/activate
+
+3. instale os modulos:
    ```bash
    pip install -r requirements.txt
 
-3. Carregue os dados na camada raw:
+4. Carregue os dados na camada raw:
    ```bash
-   python src/load_data.py
+   python src/load_data_parte_um.py
 
-4. Faça o tratamento dos dados:
+5. Faça o tratamento dos dados:
    ```bash
    python src/trusted_process_data.py
 
-5. Realize os testes:
+6. Realize os testes:
    ```bash
    python -m pytest src/tests/trusted_test_data_quality.py 
 
+7. Parte 2   
+   ```bash
+   python src/load_data_parte_dois.py 
 
-   
+8. exportar dados para a pasta data/query_output
+   ```bash
+   python src/parte_dois_case.py
